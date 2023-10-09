@@ -31,6 +31,7 @@ module.exports = function login () {
       })
   }
 
+  
   return (req: Request, res: Response, next: NextFunction) => {
     verifyPreLoginChallenges(req) // vuln-code-snippet hide-line
     models.sequelize.query(`SELECT * FROM Users WHERE email = '${req.body.email || ''}' AND password = '${security.hash(req.body.password || '')}' AND deletedAt IS NULL`, { model: UserModel, plain: true }) 
@@ -56,6 +57,10 @@ module.exports = function login () {
         next(error)
       })
   }
+
+
+
+  
   // vuln-code-snippet end loginAdminChallenge loginBenderChallenge loginJimChallenge
 
   function verifyPreLoginChallenges (req: Request) {
