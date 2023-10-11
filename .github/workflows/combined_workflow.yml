@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - garbage
+      
 jobs:
   security:
     runs-on: ubuntu-latest
